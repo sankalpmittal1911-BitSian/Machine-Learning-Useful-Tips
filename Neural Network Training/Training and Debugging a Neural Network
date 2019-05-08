@@ -1,4 +1,4 @@
-Training, Validating, Evaluating, Debugging and Testing a Neural network Model: 
+*Training, Validating, Evaluating, Debugging and Testing a Neural network Model:* 
  
 1.	Make sure the dataset is in proper format. Use VGG Image Annotator to set the outputs in proper format. Divide the dataset into training, validation and test set. Start with the ratios 80:10:10 then proceed to 90:5:5 and finally to 98:1:1.  Make sure the model we are training, we should update the configuration class files as per our dataset and pre-process the input images if necessary. 
   
