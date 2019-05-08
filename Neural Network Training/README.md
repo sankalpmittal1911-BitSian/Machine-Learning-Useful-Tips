@@ -117,7 +117,7 @@ Training loss is low but the validation loss is high/random: This is clearly the
   
 12.	**Final Tips:** Finally train and validate the model on the whole dataset and making use of callbacks such as early stopping, model checkpoint, Reduce LR on Plateau by monitoring validation loss. We can use a cyclic learning rate, which is said to be the best scheduler. 
   
-13.	If none of the above steps work, I will try the above debugging steps once again. Finally, I will contact my mentor for further help or search for the help on communities like stackoverflow or github. 
+13.	If none of the above steps work, try the above debugging steps once again or ask doubts on stackoverflow xD. Get further help or search for the help on communities like stackoverflow or github. 
   
 14.	Try to push the metric of training set and the validation set. 
   
