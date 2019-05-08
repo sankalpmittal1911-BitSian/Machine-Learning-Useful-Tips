@@ -1,45 +1,45 @@
 **Training, Validating, Evaluating, Debugging and Testing a Neural network Model:** 
  
 1.	Make sure the dataset is in proper format. Use VGG Image Annotator to set the outputs in proper format. Divide the dataset into training, validation and test set. Start with the ratios 80:10:10 then proceed to 90:5:5 and finally to 98:1:1.  Make sure the model we are training, we should update the configuration class files as per our dataset and pre-process the input images if necessary. 
-  
+
 2.	**Training without Validation:** We have to make sure that the model first trains correctly rather than validating it. Doing training and validation side by side at the beginning is a misstep. To start the training, please see the below points. 
-  
+
 3.	**The Golden Rule:** First rule is to check whether our model is structured properly, meaning our model works if at all. To check that, we train it on a single data point (single image). Now if our model is correct and sensible no matter how inefficient it is, it should at least overfit that single data point without taking much time. If not, proceed to step 5 else proceed to step 4. 
-  
+
 4.	Train the model for 5 images and then proceed to 10 images without any validation. In both these cases, the model should overfit. It should train these small datasets. 
 If no: We have to try to debug the network. Please see the below point for that. 
 If yes: Skip to point 7. 
-  
+
 5.	**Debugging a Neural Network:** If these steps don’t work after point 6, then scroll down and follow more steps to debugging – point 8 or so. 
   
- •	Is the input data not making sense? Careless mistakes like replacing height with width and repeating same batches repeatedly will make the network model to not learn. 
-  
- •	Try passing some random value: If the error behaves the same way, then it is likely that the model is turning these random values to garbage at some point. Now this problem is very difficult to eliminate. We need to debug layer by layer or module by module. Please see the below point 6 for that. 
-  
- •	Check data loader/generator: We need to check that this code is actually loading the inputs to the network ResNet. Try printing the input to the ResNet to see if it is making any sense. 
-  
- •	Is the setup of modules okay? Please check the module code once again to see that they are actually connected with each other and are making sense. 
-  
- •	Buggy Training Algorithm: Is there in any calculations operations like division by 0 or logarithm of negative numbers? Eliminate it. Are the dataset pixel values integers instead of float32? Please change it. 
-  
- •	Check the initial loss: If it is very large, then this probably means that the weight initialization is bad. Change the weight initialization. If unsure, set it to Xavier or He Initialization. 
-  
- •	Is backpropagation working? To check if it is, implement the gradient checking algorithm. We can also output gradients using keras backend and see if it matches. 
-  
- •	Try to change hyperparameters: Try grid search algorithm or manually tune it. 
-  
- •	Did you standardize the features? Centred towards zero mean and unit variance. Please fix if not. 
-  
- •	Check the learning rate. Start high and go low. Follow exponential decrease with each epoch or use KerasReduceLRonPlateau callback to monitor training loss. 
-  
- •	Try switching the optimizers: Adam is fast but it’s generalization error is higher than SGD with momentum. We will have to trial and error with these optimizers and generally either of these two can do the needful. So start with these two first. Then move to RMSProp. 
-  
- •	Shuffle the dataset. Remember, shuffle outputs in same order as the 	inputs. 
-Use train_test_split with shuffle=True or zip function. 
-  
- •	Batch Normalization makes the training really fast. Please try to add it after each layer. 
-  
- •	Again, check the consistency of dimensions for each module. Keras model.summary() should help in this regard. 
+    •	Is the input data not making sense? Careless mistakes like replacing height with width and repeating same batches repeatedly will       make the network model to not learn. 
+
+    •	**Try passing some random value:** If the error behaves the same way, then it is likely that the model is turning these random  values to garbage at some point. Now this problem is very difficult to eliminate. We need to debug layer by layer or module by module. Please see the below point 6 for that. 
+
+    •	**Check data loader/generator:** We need to check that this code is actually loading the inputs to the network ResNet. Try printing the input to the ResNet to see if it is making any sense. 
+
+    •	Is the setup of modules okay? Please check the module code once again to see that they are actually connected with each other and are making sense. 
+
+    •	**Buggy Training Algorithm:** Is there in any calculations operations like division by 0 or logarithm of negative numbers? Eliminate it. Are the dataset pixel values integers instead of float32? Please change it. 
+
+    •	**Check the initial loss:** If it is very large, then this probably means that the weight initialization is bad. Change the weight initialization. If unsure, set it to Xavier or He Initialization. 
+
+    •	Is backpropagation working? To check if it is, implement the gradient checking algorithm. We can also output gradients using keras backend and see if it matches. 
+
+    •	**Try to change hyperparameters:** Try grid search algorithm or manually tune it. 
+
+    •	Did you standardize the features? Centred towards zero mean and unit variance. Please fix if not. 
+
+    •	Check the learning rate. Start high and go low. Follow exponential decrease with each epoch or use KerasReduceLRonPlateau callback to monitor training loss. 
+
+    •	**Try switching the optimizers:** Adam is fast but it’s generalization error is higher than SGD with momentum. We will have to trial and error with these optimizers and generally either of these two can do the needful. So start with these two first. Then move to RMSProp. 
+
+    •	Shuffle the dataset. Remember, shuffle outputs in same order as the 	inputs. 
+    Use train_test_split with shuffle=True or zip function. 
+
+    •	Batch Normalization makes the training really fast. Please try to add it after each layer. 
+
+    •	Again, check the consistency of dimensions for each module. Keras model.summary() should help in this regard. 
   
 6.	**Debugging Tips:** 
   
