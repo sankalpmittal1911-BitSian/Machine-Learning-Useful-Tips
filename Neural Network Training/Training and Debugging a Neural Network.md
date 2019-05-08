@@ -1,6 +1,6 @@
 **Training, Validating, Evaluating, Debugging and Testing a Neural network Model:** 
  
-1.	Make sure the dataset is in proper format. Divide the dataset into training, validation and test set. Start with the ratios 80:10:10 then proceed to 90:5:5 and finally to 98:1:1.  Make sure the model we are training, we should update the configuration class files as per our dataset and pre-process the input images if necessary. 
+1.	Make sure the dataset is in proper format. Divide the dataset into training, validation and test set. Start with the ratios 80:10:10 then proceed to 90:5:5 and finally to 98:1:1.  Make sure the model we are training, we should pre-process the inputs if necessary. 
 
 2.	**Training without Validation:** We have to make sure that the model first trains correctly rather than validating it. Doing training and validation side by side at the beginning is a misstep. To start the training, please see the below points. 
 
